@@ -1,0 +1,121 @@
+<script src="/scripts/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
+
+<div class="container">
+  <p *ngIf="Users.length <= 0" class="no-data text-center">
+    There is no user added yet!
+  </p>
+
+  <table class="table table-bordered" *ngIf="Users.length > 0">
+    <thead class="table-success" class="bg-info">
+      <tr>
+        <th
+          scope="col"
+          data-column="username"
+          data-order="desc"
+          (click)="sortClick('username', 'desc', 'asd')"
+        >
+          Username &#9660;
+        </th>
+        <th
+          scope="col"
+          data-column="name"
+          data-order="desc"
+          (click)="sortClick('name', 'desc', 'asd')"
+        >
+          Name &#9660;
+        </th>
+        <th
+          scope="col"
+          data-column="surname"
+          data-order="desc"
+          (click)="sortClick('surname', 'desc', 'asd')"
+        >
+          Surname &#9660;
+        </th>
+        <th
+          scope="col"
+          data-column="gender"
+          data-order="desc"
+          (click)="sortClick('gender', 'desc', 'asd')"
+        >
+          Gender &#9660;
+        </th>
+        <th
+          scope="col"
+          data-column="email"
+          data-order="desc"
+          (click)="sortClick('email', 'desc', 'asd')"
+        >
+          Email &#9660;
+        </th>
+        <th
+          scope="col"
+          data-column="birthdate"
+          data-order="desc"
+          (click)="sortClick('birthdate', 'desc', 'asd')"
+        >
+          Birthdate &#9660;
+        </th>
+        <th
+          scope="col"
+          data-column="privilege"
+          data-order="desc"
+          (click)="sortClick('privilege', 'desc', 'asd')"
+        >
+          Privilege &#9660;
+        </th>
+        <th scope="col center">Operation</th>
+      </tr>
+    </thead>
+    <tbody id="myTable">
+      <tr *ngFor="let user of Users">
+        <th scope="row">{{ user.username }}</th>
+        <td>{{ user.name }}</td>
+        <td>{{ user.surname }}</td>
+        <td>{{ user.gender }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.birthdate }}</td>
+        <td *ngIf="user.privilege === -1">USER</td>
+        <td *ngIf="user.privilege !== -1">ADMIN LEVEL: {{ user.privilege }}</td>
+        <td class="text-center edit-block">
+          <span class="edit" [routerLink]="['/userOperation/', user._id]">
+            <button type="button" class="btn btn-success btn-sm">Edit</button>
+          </span>
+          <span class="delete" (click)="removeUser(user._id)">
+            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- <ul
+  uib-pagination
+  total-items="totalItems"
+  ng-model="currentPage"
+  ng-change="pageChanged()"
+></ul> -->
+
+<mat-paginator
+  [length]="totalposts"
+  [pageSize]="postperpage"
+  [pageSizeOptions]="pageSizeOption"
+  (page)="onChangedPage($event)"
+>
+</mat-paginator>
+
+<!-- <style>
+  th {
+    color: #fff;
+  }
+</style> -->

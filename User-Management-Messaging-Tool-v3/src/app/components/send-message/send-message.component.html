@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+  <div class="col-md-4 register-employee">
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="mb-0">Send Message</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="inputTo">Reciever</label>
+            <input
+              id="typeahead-basic"
+              class="form-control"
+              type="text"
+              formControlName="reciever"
+              [(ngModel)]="model"
+              [ngbTypeahead]="search"
+            />
+            <div *ngIf="submitted && myForm.reciever.errors?.required">
+              You have to type the reciever.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputTitle">Title</label>
+            <input class="form-control" type="text" formControlName="title" />
+            <div *ngIf="submitted && myForm.title.errors?.required">
+              You have to type the title.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputMessage">Message</label>
+            <input class="form-control" type="text" formControlName="message" />
+            <div *ngIf="submitted && myForm.message.errors?.required">
+              You have to type the message.
+            </div>
+          </div>
+          <div *ngIf="submitted && send">Message is sent.</div>
+          <div class="form-group">
+            <button class="btn btn-success btn-lg btn-block" type="submit">
+              <div>Send</div>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
