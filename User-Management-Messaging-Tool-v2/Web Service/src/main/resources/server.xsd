@@ -1,0 +1,260 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+    <xs:complexType name="user">
+        <xs:sequence>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="surname" type="xs:string"/>
+            <xs:element name="gender" type="tns:gender"/>
+            <xs:element name="mail" type="xs:string"/>
+            <xs:element name="birthdate" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="admin">
+        <xs:complexContent>
+            <xs:extension base="tns:user">
+                <xs:sequence>
+                    <xs:element name="adminPrivilege" type="xs:int"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="message">
+        <xs:sequence>
+            <xs:element name="Msender" type="xs:string"/>
+            <xs:element name="Mreciever" type="xs:string"/>
+            <xs:element name="Mtitle" type="xs:string"/>
+            <xs:element name="Mdate" type="xs:date"/>
+            <xs:element name="theMessage" type="xs:string"/>
+            <xs:element name="availability" type="xs:int"/>
+            <xs:element name="mid" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name = "gender">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="Male|Female|Unstated"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+    <xs:element name="loginRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+                <xs:element name="password" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="loginResponse">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="user" type="tns:user"/>
+                <xs:element name="error" type="xs:string"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="curAdmin" type="tns:user"/>
+                <xs:element name="newUser" type="tns:user"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addAdminRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="curAdmin" type="tns:user"/>
+                <xs:element name="newAdmin" type="tns:admin"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addAdminResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+    <xs:element name="removeUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="curAdmin" type="tns:user"/>
+                <xs:element name="removedUser" type="tns:user"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="removeUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="removeAdminRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="curAdmin" type="tns:user"/>
+                <xs:element name="removedAdmin" type="tns:admin"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="removeAdminResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="updateUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="curAdmin" type="tns:user"/>
+                <xs:element name="oldUser" type="tns:user"/>
+                <xs:element name="newUser" type="tns:user"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="updateAdminRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="curAdmin" type="tns:user"/>
+                <xs:element name="oldAdmin" type="tns:admin"/>
+                <xs:element name="newAdmin" type="tns:admin"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateAdminResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="getUsersRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="curAdmin" type="tns:user"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getUsersResponse">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="user" type="tns:user"  maxOccurs="unbounded" minOccurs="0" />
+                <xs:element name="error" type="xs:string"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="getInboxRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="curUser" type="tns:user"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getInboxResponse">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="message" type="tns:message"  maxOccurs="unbounded" minOccurs="0" />
+                <xs:element name="error" type="xs:string"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOutboxRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="curUser" type="tns:user"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOutboxResponse">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="message" type="tns:message"  maxOccurs="unbounded" minOccurs="0" />
+                <xs:element name="error" type="xs:string"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="sendMessageRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="curUser" type="tns:user"/>
+                <xs:element name="message" type="tns:message"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="sendMessageResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteMessageRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="curUser" type="tns:user"/>
+                <xs:element name="message" type="tns:message"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteMessageResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

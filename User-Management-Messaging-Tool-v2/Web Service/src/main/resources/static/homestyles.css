@@ -1,0 +1,155 @@
+.navbar {
+    background-color: rgb(26 26 26);
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.navbar a {
+    float: left;
+    color: #ffffff;
+    padding: 12px 17px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.navbar a:hover {
+    background-color: rgb(243 243 243);
+    color: #0e0d0d;
+}
+
+body {
+    background-color: #56b0e5;
+    font-size: 18px;
+}
+
+input[type=submit] {
+    padding:10px 20px;
+    background-color: #04AA6D;color: white;
+    border:0 none;
+    cursor:pointer;
+    border-radius: 8px;
+    opacity: 0.8;
+}
+
+div.login {
+    width: 400px;
+    height: 280px;
+    margin: 200px 580px;
+    padding-top: 40px;
+    background-color: #ffc6c6;
+    font-size: 30px;
+    text-align: center;
+    box-sizing: border-box;
+    border: px solid #ccc;
+}
+
+table {
+    font-family:  Helvetica;
+    border-collapse: collapse;
+    width: 90%;
+    margin-top: 60px;
+    margin-left: 70px;
+    border-radius: 4px;
+}
+
+table td{
+    border: 1px solid #e97f7f;
+    padding: 8px;
+}
+table th {
+    border: 1px solid #efe0e0;
+    padding: 8px;
+}
+
+table tr {
+    background-color: #daf2f6;
+}
+
+table tr:hover {
+    background-color: #463232;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color: #efcbcb;}
+
+table th {
+    padding-top: 15px;
+    padding-bottom: 30px;
+    text-align: left;
+    background-color: #aa0404;
+    color: white;
+}
+label {
+    color: black;
+    padding: 4px;
+    margin-left:10px;
+    margin-top: 15px;
+}
+
+#themessage {
+    margin-left:10px;
+    margin-top: 10px;
+    width: 80%;
+    height: 50px;
+}
+#title {
+    margin-left:10px;
+    margin-top: 10px;
+    width: 60%;
+    height: 20px;
+}
+#reciever {
+    margin-left:10px;
+    margin-top: 10px;
+    width: 20%;
+    height: 20px;
+}
+#usernamee {
+    margin-left:10px;
+    margin-top: 10px;
+    width: 20%;
+    height: 30px;
+}
+#passwordd{
+    margin-left:10px;
+    margin-top: 10px;
+    width: 20%;
+    height: 30px;
+}
+#name {
+    margin-left:10px;
+    margin-top: 10px;
+    width: 20%;
+    height: 30px;
+}
+#surname {
+    margin-left:10px;
+    margin-top: 10px;
+    width: 20%;
+    height: 30px;
+}
+#gender {
+    margin-left:10px;
+    margin-top: 10px;
+    width: 20%;
+    height: 30px;
+}
+#mail {
+    margin-left:10px;
+    margin-top: 10px;
+    width: 20%;
+    height: 30px;
+}
+#birthdate {
+    margin-left:10px;
+    margin-top: 10px;
+    width: 20%;
+    height: 30px;
+}
+#adminPrivilege {
+    margin-left:10px;
+    margin-top: 10px;
+    width: 20%;
+    height: 30px;
+}
